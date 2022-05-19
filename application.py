@@ -6,7 +6,7 @@ import string
 TEST_LETTER_SPEC = ("smarted", "r") #Sample letter list and special letter for testing.
 WORDS_7 = bee.WORDS_7
 WORDLIST = bee.WORDLIST
-LETTER_LIST, SPECIAL_LETTER = bee.get_letters(WORDS_7)
+LETTER_LIST, SPECIAL_LETTER = TEST_LETTER_SPEC#bee.get_letters(WORDS_7)
 LETTERS_STR = f"{bee.to_str(LETTER_LIST)} <br /> Mandatory letter: {SPECIAL_LETTER.upper()}"
 SOLUTIONS = bee.get_solutions(WORDLIST, LETTER_LIST, SPECIAL_LETTER)
 SOLVE = False
