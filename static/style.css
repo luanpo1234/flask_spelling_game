@@ -1,0 +1,70 @@
+div {
+  padding: 15px;
+  padding-left: 50px;
+}
+
+h1 {
+  padding-top: 20px;
+  padding-left: 50px;
+  text-align: center;
+}
+
+h5 {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+p {
+  padding-left: 30px;
+  padding-top: 30px;
+}
+
+ul {
+	padding-top: 30px;
+}
+
+ul > li {
+  width: 200px;
+  font-size: 80%
+}
+
+input[type=text] {
+  width: 75%;
+}
+
+input[type=button] {
+  width: 20%;
+}
+
+#wrapper {
+    width: 90%;
+     /*border: 1px solid black;*/
+    overflow: hidden; /* add this to contain floated children */
+}
+#inputarea {
+    width: 50%;
+    float:left; /* add this */
+    /*border: 1px solid red;*/
+}
+#listused {
+    /*border: 1px solid green;*/
+    float: left; /* add this */
+	font-size: 130%;
+}
+
+#letters {
+	font-weight: bold;
+	font-size: 150%;
+}
+
+#score {
+	font-weight: bold;
+	font-size: 130%;
+	text-align: center;
+}
+
+.column-list {
+    display: flex;
+    flex-flow: wrap column;
+    max-height: 400px; /* Limit height to whatever you need */
+}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock%}
+{% block content %}
+
+<div id="wrapper">
+
+
+<div id="inputarea">
+<h1>Spelling Game </h1>
+
+<div id="score">
+{{msgscore|safe}}
+</div>
+	<p>Type in a word containing the letters below: </p>
+		<div id="letters">
+		{{letters|safe}}
+		</div>
+		
+		<form action="#" method="post">
+		
+		<input type="text" class="wordInput" name="wordInput" autofocus>
+        <input type="submit" value="Check" />
+		
+		</form>
+		</div>
+		
+       <div id="listused">
+	   <h5>Found words:</h5>
+		{{listused|safe}}
+		</div>
+</div>
+{% endblock%}
