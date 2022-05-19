@@ -21,11 +21,12 @@ p {
 
 ul {
 	padding-top: 30px;
+	
 }
 
 ul > li {
   width: 200px;
-  font-size: 80%
+  font-size: 70%;
 }
 
 input[type=text] {
@@ -48,9 +49,10 @@ input[type=button] {
 }
 #listused {
     /*border: 1px solid green;*/
+	width: 50%;
     float: left; /* add this */
-	font-size: 130%;
 }
+
 
 #letters {
 	font-weight: bold;
@@ -59,12 +61,16 @@ input[type=button] {
 
 #score {
 	font-weight: bold;
-	font-size: 130%;
+	font-size: 110%;
 	text-align: center;
 }
 
+
 .column-list {
-    display: flex;
+	column-count: 3;
+	column-width: 100px;
+	font-size: 200%;
+    /*display: flex;
     flex-flow: wrap column;
     max-height: 400px; /* Limit height to whatever you need */
 }

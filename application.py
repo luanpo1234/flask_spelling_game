@@ -3,6 +3,7 @@ import random
 import bee
 import string
 
+TEST_LETTER_SPEC = ("smarted", "r") #Sample letter list and special letter for testing.
 WORDS_7 = bee.WORDS_7
 WORDLIST = bee.WORDLIST
 LETTER_LIST, SPECIAL_LETTER = bee.get_letters(WORDS_7)
@@ -18,10 +19,12 @@ def get_new_letters(letter_list=WORDS_7):
     print("Special letter: ", special_letter)
     return letters, special_letter
 
-def build_list_used(lst, class_="column-list"):
+def build_list_used_str(lst, class_="column-list", sort=True):
     if len(lst) == 0:
         return ""
-    res = f"<ul class= {class_}>"
+    res = f"<h5>You have found {len(lst)} words.</h5> <ul class= {class_}>"
+    if sort:
+        lst = sorted(lst)
     for el in lst:
         res = res + "<li>" + el + "</li>"
     res += "</ul>"
@@ -57,7 +60,7 @@ def check_word():
                     session["total_score"] += points
         letters = LETTERS_STR
         msg_score = f"Total score: {session['total_score']} <br /> {msg} <br />" 
-        list_used_html = build_list_used(session["used_words"])
+        list_used_html = build_list_used_str(session["used_words"])
         print(SPECIAL_LETTER)
     return render_template("index.html", letters=letters, msgscore=msg_score, listused=list_used_html)
 
