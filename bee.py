@@ -9,6 +9,7 @@ Created on Thu Jan 20 10:00:27 2022
 from nltk.corpus import brown
 import random
 
+nltk.download("brown")
 
 WORDLIST = [w.lower() for w in set(brown.words()) if w.isalpha()]
 print(len(WORDLIST))
