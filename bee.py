@@ -5,15 +5,15 @@ Created on Thu Jan 20 10:00:27 2022
 @author: luanp
 """
 
-
-from nltk.corpus import brown
 import random
+import pickle
 
-WORDLIST = [w.lower() for w in set(brown.words()) if w.isalpha()]
-print(len(WORDLIST))
-  
-# Getting all words with 7 unique characters:
-WORDS_7 = [w for w in WORDLIST if len(set(w)) == 7]
+
+file = open('wordlist.txt', 'rb')
+WORDLIST = pickle.load(file)
+
+file = open('words7.txt', 'rb')
+WORDS_7 = pickle.load(file)
 
 
 def get_letters(wordlist):
@@ -46,19 +46,14 @@ def to_str(letter_list):
 def check_score(input_str, wordlist, letterlist, special_letter, min_lett=4):
     """
     """
-    """
-    assert len(input_str) >= min_lett, f"Word must have at least {min_lett} letters!"
-    assert input_str in wordlist, "Word not found!"
-    assert len(set(input_str) - set(letterlist)) == 0, "Letter not in list!"
-    """
     if special_letter not in input_str:
         return f"Word must contain letter {special_letter.upper()}!", 0
     if len(input_str) < min_lett:
         return f"Word must have at least {min_lett} letters!", 0
-    if input_str not in wordlist:
-        return "Word not found!", 0
     if len(set(input_str) - set(letterlist)) != 0:
         return "Letter not in list!", 0
+    if input_str not in wordlist:
+        return "Word not found!", 0
     if len(input_str) == min_lett:
         return "", 1
     if len(set(input_str)) == len(letterlist):
