@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock%}
+{% block content %}
+
+<div id="wrapper">
+
+
+<div id="inputarea">
+<h1>Spelling Game </h1>
+
+<div id="score">
+{{msgscore|safe}}
+</div>
+	<h5>Congratulations! You have found all words. </h5>
+		<div id="letters">
+		{{letters|safe}}
+		</div>
+
+		</div>
+		
+       <div id="listused">
+		{{listused|safe}}
+		</div>
+</div>
+{% endblock%}

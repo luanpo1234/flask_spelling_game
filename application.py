@@ -1,3 +1,7 @@
+"""
+Set-ExecutionPolicy Unrestricted -Scope Process
+venv/Scripts/activate.ps1
+"""
 from flask import Flask, redirect, url_for, render_template, request, session
 import random
 import bee
@@ -14,10 +18,6 @@ SOLVE = False
 app = Flask(__name__)
 app.secret_key = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(8))
 
-def get_new_letters(letter_list=WORDS_7):
-    letters, special_letter = bee.get_letters(letter_list), random.choice(letter_list)
-    print("Special letter: ", special_letter)
-    return letters, special_letter
 
 def build_list_used_str(lst, class_="column-list", sort=True):
     if len(lst) == 0:
@@ -62,6 +62,8 @@ def check_word():
         msg_score = f"Total score: {session['total_score']} <br /> {msg} <br />" 
         list_used_html = build_list_used_str(session["used_words"])
         print(SPECIAL_LETTER)
+        if set(session["used_words"]) == set(SOLUTIONS):
+            return render_template("solved.html", letters=letters, msgscore=msg_score, listused=list_used_html)
     return render_template("index.html", letters=letters, msgscore=msg_score, listused=list_used_html)
 
 if __name__ == "__main__":

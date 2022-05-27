@@ -38,6 +38,14 @@ def get_letters(wordlist):
 #_special_letter = random.choice(_letter_list)
 
 def to_str(letter_list):
+    """
+    Returns list of letters in uppercase string format.
+    ---
+    param letter_list: list of letters
+    ---
+    Returns:
+    List of letters in an uppercase string.
+    """
     s = ""
     for c in letter_list:
         s += c.upper() + " "
@@ -45,13 +53,23 @@ def to_str(letter_list):
 
 def check_score(input_str, wordlist, letterlist, special_letter, min_lett=4):
     """
+    Checks the score of the input based on the rules of the game.
+    ---
+    param input_str: string
+    param wordlist: list of words
+    param letterlist: list of letters
+    param special letter: string, single char
+    param min_lett: int
+    ---
+    Returns:
+    tuple with message string and score integer
     """
     if special_letter not in input_str:
         return f"Word must contain letter {special_letter.upper()}!", 0
     if len(input_str) < min_lett:
         return f"Word must have at least {min_lett} letters!", 0
     if len(set(input_str) - set(letterlist)) != 0:
-        return "Letter not in list!", 0
+        return "Entry contains illegal character!", 0
     if input_str not in wordlist:
         return "Word not found!", 0
     if len(input_str) == min_lett:
@@ -61,7 +79,7 @@ def check_score(input_str, wordlist, letterlist, special_letter, min_lett=4):
     return "", len(input_str)
 
 def get_solutions(wordlist, letter_list, special_letter, min_lett=4):
-    solutions = [w for w in wordlist if len(w) >= min_lett and special_letter in w and len(set(w) - set(letter_list)) == 0]
+    solutions = [w for w in set(wordlist) if len(w) >= min_lett and special_letter in w and len(set(w) - set(letter_list)) == 0]
     return solutions
 
 def terminal_game(wordlist, letter_list):
