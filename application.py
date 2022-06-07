@@ -68,4 +68,4 @@ def check_word():
 
 if __name__ == "__main__":
     print(SOLUTIONS)
-    app.run(host="192.168.2.100", port=5000, debug=True)
+    app.run(port=5000, debug=True)
